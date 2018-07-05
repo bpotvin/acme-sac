@@ -3,7 +3,7 @@
 #include <stdarg.h>
 #include <errno.h>
 #include <string.h>
-#include "math.h"
+#include <math.h>
 #include <fcntl.h>
 #include <setjmp.h>
 #include <float.h>
@@ -19,7 +19,11 @@
 #undef environ
 
 /* do-it-yourself isinf and isnan */
+#if _MSC_VER >= 1900
+ #undef isnan
+#endif
 #define isnan(x) _isnan(x)
+
 #ifndef isinf
 #define isinf(x) (!_finite(x))
 #endif
