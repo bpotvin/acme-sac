@@ -1,17 +1,30 @@
-# Auto detect text files and perform LF normalization
-* text eol=lf
+# ++
+# these are text, so convert.
+#
+*.asm text
+*.inc text
+*.c text
+*.h text
+*.cpp text
+*.hpp tet
+*.cxx text
+*.php text
+*.css text
+*.js text
+*.tsx text
+*.htm text
+*.html text
+*.xml text
+*.txt text
+*.ini text
 
-# Custom for Visual Studio
-*.cs     diff=csharp
-
-# Standard to msysgit
-*.doc	 diff=astextplain
-*.DOC	 diff=astextplain
-*.docx diff=astextplain
-*.DOCX diff=astextplain
-*.dot  diff=astextplain
-*.DOT  diff=astextplain
-*.pdf  diff=astextplain
-*.PDF	 diff=astextplain
-*.rtf	 diff=astextplain
-*.RTF	 diff=astextplain
+# ++
+# these are binaries, so leave alone. "binary" is same as "-text -diff".
+#
+*.exe binary
+*.pdf binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gz binary
+*.zip binary
