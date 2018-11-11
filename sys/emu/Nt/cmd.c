@@ -152,16 +152,20 @@ oscmd(char **args, int nice, char *dir, int *fd)
 	si.hStdError = eh;
 
 	prio = 0;
-	if(nice){
+	if(nice)
+	{
 		prio = IDLE_PRIORITY_CLASS;
 		if(nice > 1)
+		{
 			prio |= CREATE_SUSPENDED;
+		}
 	}
 
 	/* default of nil for wpath seems to be what we want; nil for env exports our current one */
-	if(!CreateProcess(nil/*wpath*/, wcmd, 0, 0, 1,
-	   CREATE_NEW_PROCESS_GROUP|CREATE_DEFAULT_ERROR_MODE|prio,
-	   0 /*env*/, wdir, &si, &pinfo)){
+	if( !CreateProcess(nil/*wpath*/, wcmd, 0, 0, 1,
+	   /*CREATE_NEW_PROCESS_GROUP|*/(CREATE_DEFAULT_ERROR_MODE | CREATE_NO_WINDOW | prio),
+	   0 /*env*/, wdir, &si, &pinfo))
+	{
 		//print("can't create process '%Q' %d\n", wcmd, GetLastError());
 		goto Error;
 	}

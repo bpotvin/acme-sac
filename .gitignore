@@ -45,8 +45,10 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
+.backup/
 *.caeracme
 *.obj
+*.map
 *.pdb
 sys/emu/Nt/iacme.map
 *.a
